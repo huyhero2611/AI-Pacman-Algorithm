@@ -125,5 +125,26 @@ d. successor
       if distances > hStar:
           hStar = distances
   ```
-  
+7. Eat All Dots
+- lấy ra danh sách các foods xuất hiện trên ma trận
+```
+foodPosition = foodGrid.asList()
+```
+- duyệt toàn bộ foods và xét heuristic* = max heuristic tính được trong foods position
+```
+heuristic = [0] 
+for pos in foodPosition:
+    heuristic.append(mazeDistance(position,pos,problem.startingGameState)) # add cac heuristic cua food vao mang heuristic
+return max(heuristic)
+```
+8. suboptimal search
+- xét bất cứ food position nào đều là goal => eat all dots (in AnyFoodSearchProblem)
+```
+return state in self.food.asList()
+```
+- sau đó truyền vào ClosestDotSearchAgent và sử dụng BFS để giải quyết bài toán
+```
+from search import breadthFirstSearch # worse case = depth first search
+return breadthFirstSearch(problem)
+```
  
