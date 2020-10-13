@@ -525,7 +525,12 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    foodPosition = foodGrid.asList() # lay ra danh sach vi tri foods
+
+    heuristic = [0] 
+    for pos in foodPosition:
+        heuristic.append(mazeDistance(position,pos,problem.startingGameState)) # add cac heuristic cua food vao mang heuristic
+    return max(heuristic) # tra ve vi tri max cua 1 food de co the an het foods
 
 
 class ClosestDotSearchAgent(SearchAgent):
@@ -559,8 +564,8 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
-
+        from search import breadthFirstSearch # worse case = depth first search
+        return breadthFirstSearch(problem)
 
 class AnyFoodSearchProblem(PositionSearchProblem):
     """
@@ -596,7 +601,7 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x, y = state
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return state in self.food.asList() #state la goal neu no la food position
 
 
 def mazeDistance(point1, point2, gameState):

@@ -121,23 +121,7 @@ def breadthFirstSearch(problem):
                 if state not in visited:
                     queue.push((state, actions+[action]))
     return []
-
-    # queue = util.Queue()
-    # queue.push((problem.getStartState(), []))
-    # visited = list()
-    # while not queue.isEmpty():
-    #     currentState, actions = queue.pop()
-    #     if currentState in visited:
-    #         continue
-    #     visited.append (currentState)
-    #     if problem.isGoalState(currentState):
-    #         return actions
-    #     successors = problem.getSuccessors(currentState)
-    #     for state, action, cost in successors:
-    #         newActions = actions + [action]
-    #         queue.push((state, newActions))
-    # return []   
-
+    
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
